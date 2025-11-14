@@ -48,6 +48,15 @@ commit_and_tag() {
   fi
 }
 
+# TEMPORARY TEST OVERRIDE
+if jq -e '.lastDownLoaded' "$MANIFEST" >/dev/null 2>&1; then
+  LATEST=$(jq '.lastDownLoaded + 2' "$MANIFEST")
+  export OVERRIDE_LATEST_POST="$LATEST"
+  echo "⚙️  OVERRIDE_LATEST_POST set to $OVERRIDE_LATEST_POST (for testing)"
+else
+  echo "⚠️  Could not read .lastDownLoaded from $MANIFEST"
+fi
+
 # =============================================================
 # STEP 0 — UPDATE LOCAL DATA (DOWNLOADER)
 # =============================================================
