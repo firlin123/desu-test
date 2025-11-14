@@ -3,22 +3,11 @@
   "daily": [
     "42799494_42799534"
   ],
-  "monthly": [
-    "monthly_1_1",
-    "monthly_1_1",
-    "monthly_1_1",
-    "monthly_1_1",
-    "monthly_1_1",
-    "monthly_1_1",
-    "monthly_1_1",
-    "monthly_1_1",
-    "monthly_1_1",
-    "monthly_1_1",
-    "monthly_1_1",
-    "monthly_1_1",
-    "monthly_1_1",
-    "monthly_1_1",
-    "monthly_1_42799493"
-  ],
-  "yearly": []
+  "monthly": [],
+  "yearly": [
+    {
+      "name": "yearly_1_42799493",
+      "url": "https://archive.org/download/desuarchive_mlp_1_42799493_20251114215436/base_1_42799493.ndjson.gz"
+    }
+  ]
 }
