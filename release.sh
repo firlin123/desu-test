@@ -12,7 +12,7 @@ YEARLY_THRESHOLD=2
 MANIFEST="manifest.json"
 
 # Internet Archive configuration
-IA_COLLECTION="desuarchive_mlp_backup"
+IA_COLLECTION="desuarchive_mlp_test_1"
 IA_PREFIX="mlp_yearly"
 
 # =============================================================
