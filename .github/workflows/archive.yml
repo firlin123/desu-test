@@ -46,10 +46,13 @@ jobs:
       - name: Verify IA authentication
         run: ia configure --whoami
 
-      - name: Configure git identity
+      - name: Configure git identity and auth
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Use the workflow token for authenticated pushes and tags
+          git remote set-url origin \
+            https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
       - name: Run archive script
         run: |
