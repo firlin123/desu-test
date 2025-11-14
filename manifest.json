@@ -1,13 +1,11 @@
 {
-  "lastDownLoaded": 42796152,
-  "daily": [
-    "42796147_42796148",
-    "42796149_42796150",
-    "42796151_42796152"
-  ],
-  "monthly": [
-    "monthly_42796131_42796138",
-    "monthly_42796139_42796146"
-  ],
-  "yearly": []
+  "lastDownLoaded": 42796154,
+  "daily": [],
+  "monthly": [],
+  "yearly": [
+    {
+      "name": "yearly_42796131_42796154",
+      "url": "https://archive.org/download/mlp_yearly_42796131_42796154_20251114170558/yearly_42796131_42796154.ndjson.gz"
+    }
+  ]
 }
