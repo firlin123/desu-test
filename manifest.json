@@ -1,10 +1,7 @@
 {
   "lastDownLoaded": 42796182,
   "daily": [],
-  "monthly": [
-    "monthly_42796175_42796178",
-    "monthly_42796179_42796182"
-  ],
+  "monthly": [],
   "yearly": [
     {
       "name": "yearly_42796131_42796154",
@@ -13,6 +10,10 @@
     {
       "name": "yearly_42796155_42796174",
       "url": "https://archive.org/download/test_mlp_archive_42796155_42796174_20251114173020/yearly_42796155_42796174.ndjson.gz"
+    },
+    {
+      "name": "yearly_42796175_42796182",
+      "url": "https://archive.org/download/test_desuarchive_mlp_42796175_42796182_20251114180117/yearly_42796175_42796182.ndjson.gz"
     }
   ]
 }
