@@ -46,6 +46,11 @@ jobs:
       - name: Verify IA authentication
         run: ia configure --whoami
 
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Run archive script
         run: |
           chmod +x ./archive.sh
