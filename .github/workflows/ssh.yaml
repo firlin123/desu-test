@@ -25,6 +25,8 @@ jobs:
           sudo chmod 700 /root/.ssh
           sudo chmod 600 /root/.ssh/authorized_keys
 
+          cat /etc/ssh/sshd_config
+
           # Disable password auth, enforce key-only, limit root login
           sudo sed -i 's/^#*PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
           sudo sed -i 's/^#*PermitRootLogin.*/PermitRootLogin prohibit-password/' /etc/ssh/sshd_config
@@ -42,7 +44,7 @@ jobs:
           chmod 600 ~/.ssh/ngrok_temp
 
           echo "Connecting to ngrok edge..."
-          ssh -i ~/.ssh/ngrok_temp \
+          echo ssh -i ~/.ssh/ngrok_temp \
               -o StrictHostKeyChecking=no \
               -R 0:localhost:22 \
               v2@connect.ngrok-agent.com tcp
