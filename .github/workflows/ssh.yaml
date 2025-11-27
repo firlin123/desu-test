@@ -25,15 +25,20 @@ jobs:
           sudo chmod 700 /root/.ssh
           sudo chmod 600 /root/.ssh/authorized_keys
 
+          echo /etc/ssh/sshd_config BEFORE:
           cat /etc/ssh/sshd_config
 
           # Disable password auth, enforce key-only, limit root login
-          sudo sed -i 's/^#*PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
-          sudo sed -i 's/^#*PermitRootLogin.*/PermitRootLogin prohibit-password/' /etc/ssh/sshd_config
-          sudo sed -i 's/^#*PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+          sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+          sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
+          sudo sed -i 's/^#\?PubkeyAuthentication.*/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+          sudo sed -i 's/^#\?UsePAM.*/UsePAM no/' /etc/ssh/sshd_config
+
+          echo /etc/ssh/sshd_config AFTER:
+          cat /etc/ssh/sshd_config
 
           sudo systemctl restart ssh
-          echo "✓ SSH server running and restricted to ALLOWED_SSH_KEY."
+          echo "SSH server running and restricted to ALLOWED_SSH_KEY."
 
       - name: Expose SSH via Ngrok (agentless)
         env:
@@ -44,7 +49,7 @@ jobs:
           chmod 600 ~/.ssh/ngrok_temp
 
           echo "Connecting to ngrok edge..."
-          echo ssh -i ~/.ssh/ngrok_temp \
+          ssh -i ~/.ssh/ngrok_temp \
               -o StrictHostKeyChecking=no \
               -R 0:localhost:22 \
               v2@connect.ngrok-agent.com tcp
