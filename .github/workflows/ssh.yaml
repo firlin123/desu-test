@@ -11,7 +11,7 @@ jobs:
       - name: Install SSH server and client
         run: |
           sudo apt update
-          sudo apt install -y openssh-server openssh-client
+          sudo apt install -y openssh-server openssh-client npm
           sudo systemctl enable ssh
           sudo systemctl start ssh
 
