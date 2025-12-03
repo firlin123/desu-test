@@ -1,0 +1,44 @@
+name: Self-Cancel Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  maybe-cancel:
+    runs-on: ubuntu-latest
+
+    permissions:
+      actions: write
+      contents: read
+
+    steps:
+      - name: Maybe cancel
+        id: flip
+        env:
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          if (( RANDOM % 2 )); then
+            echo "Heads. Cancelling the job."
+            gh run cancel "$RUN_ID"
+            echo "Blocking futher steps until the canceletion reqest goes through and kills this process..."
+            sleep infinity
+          else
+            echo "Tails. Continue to main."
+          fi
+
+  main:
+    runs-on: ubuntu-latest
+    needs: [maybe-cancel]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Simulate main work
+        run: |
+          echo "Starting main job..."
+          for i in {1..5}; do
+            echo "Working... step $i"
+            sleep 2
+          done
+          echo "Main job finished successfully."
