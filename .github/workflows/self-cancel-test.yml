@@ -16,6 +16,7 @@ jobs:
         id: flip
         env:
           RUN_ID: ${{ github.run_id }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           if (( RANDOM % 2 )); then
             echo "Heads. Cancelling the job."
