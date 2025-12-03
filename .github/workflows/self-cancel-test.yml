@@ -20,7 +20,7 @@ jobs:
         run: |
           if (( RANDOM % 2 )); then
             echo "Heads. Cancelling the job."
-            gh run cancel "$RUN_ID"
+            gh run cancel "$RUN_ID" --repo "$GITHUB_REPOSITORY"
             echo "Blocking futher steps until the canceletion reqest goes through and kills this process..."
             sleep infinity
           else
