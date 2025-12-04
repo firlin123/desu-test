@@ -23,5 +23,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          echo "TODO: Other steps"
-          ia --version
+          ./archive.sh
