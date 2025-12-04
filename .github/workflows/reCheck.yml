@@ -1,0 +1,29 @@
+name: ReCheck Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_name:
+        description: "Name of the release to recheck"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  packages: read
+
+jobs:
+  recheck:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install required packages
+        run: ./installCommands.sh awk bash curl date echo env gh google-chrome-stable gzip kill node npm sha256sum shuf sleep
+
+      - name: Run recheck script
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: ./recheckRelease.sh "${{ github.event.inputs.release_name }}"
