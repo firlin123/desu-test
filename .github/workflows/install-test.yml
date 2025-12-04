@@ -19,7 +19,13 @@ jobs:
         run: |
           ./installCommands.sh basename bash curl date echo env gh git google-chrome-stable \
             grep gzip head ia jq kill mktemp mv node npm pipx rm shuf tail
-      - name: Run main
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run archive script
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
