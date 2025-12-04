@@ -80,7 +80,7 @@ jobs:
             fi
             if [ $HAD_IA -eq 1 ]; then
               echo "Installing Internet Archive CLI..."
-              sudo python3 -m pip install --upgrade internetarchive
+              pipx install internetarchive
             fi
             if [ $HAS_NPM -eq 1 ]; then
               echo "Installing npm packages..."
@@ -88,7 +88,7 @@ jobs:
             fi
           }
           
-          install_commands basename bash curl date echo env gh git google-chrome-stable grep gzip head ia jq kill mktemp mv node npm shuf tail
+          install_commands basename bash curl date echo env gh git google-chrome-stable grep gzip head jq kill mktemp mv node npm shuf tail
       - name: Run main
         env:
           GH_TOKEN: ${{ github.token }}
