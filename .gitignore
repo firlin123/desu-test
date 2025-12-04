@@ -1,4 +1,5 @@
-daily_*
-monthly_*
-yearly_*
+*.ndjson*
 post_lookup_cache.json
+fetch_cache
+fetch_cache/*
+node_modules

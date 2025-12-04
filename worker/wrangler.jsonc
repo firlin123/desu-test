@@ -1,0 +1,15 @@
+{
+    "name": "cf-github-cron",
+    "workers_dev": false,
+    "preview_urls": false,
+    "main": "src/index.js",
+    "compatibility_date": "2025-11-16",
+    "triggers": {
+        "crons": [
+            "20 3 * * *"
+        ]
+    },
+    "observability": {
+        "enabled": true
+    }
+}
